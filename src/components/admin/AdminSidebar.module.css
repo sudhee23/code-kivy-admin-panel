@@ -1,0 +1,82 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--sidebar-width-collapsed);
+  background-color: var(--sidebar-background-color);
+  color: var(--sidebar-text-color);
+  transition: width 0.3s ease;
+  z-index: 1000;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar:hover {
+  width: var(--sidebar-width-expanded); /* Expand sidebar on hover */
+}
+
+/* Sidebar List */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+  background-color: var(--sidebar-hover-color);
+}
+
+/* Icons */
+.sidebar ul li .icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* Text */
+.sidebar ul li .text {
+  display: none;
+  font-family: var(--nav-font);
+  font-size: 16px;
+  color: var(--sidebar-text-color);
+}
+
+/* Show text when sidebar expands */
+.sidebar:hover ul li .text {
+  display: inline-block;
+}
+
+/* Active (Clicked) State */
+.sidebar ul li.active {
+  background-color: var(--sidebar-active-color);
+  color: var(--contrast-color);
+}
+
+.sidebar ul li.active .icon, 
+.sidebar ul li.active .text {
+  color: var(--contrast-color);
+}
+
+/* Main Content */
+.admin-content {
+  margin-left: var(--sidebar-width-collapsed); /* Content starts after sidebar */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .admin-content {
+  margin-left: var(--sidebar-width-expanded); /* Adjust content position when sidebar expands */
+}
