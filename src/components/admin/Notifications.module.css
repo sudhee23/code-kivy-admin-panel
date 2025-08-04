@@ -1,4 +1,4 @@
-.students-container, .notifications-container, .contacts-container {
+.notifications-container{
   padding: 20px;
   background-color: #f8f9fa;
   border-radius: 10px;
@@ -10,12 +10,17 @@ h2 {
   margin-bottom: 20px;
 }
 
-.course-buttons, .send-notification {
+.send-notification {
   margin-bottom: 20px;
 }
 
-.course-btn, .send-btn {
-  background-color: #007bff;
+.button-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.send-btn {
+  background-color: orange;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -23,10 +28,35 @@ h2 {
   cursor: pointer;
   margin-right: 10px;
   font-size: 16px;
+  margin-bottom:10px;
 }
 
-.course-btn:hover, .send-btn:hover {
-  background-color: #0056b3;
+.delete-all-btn {
+  background-color: orangered;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.delete-all-btn:hover,.delete-btn:hover {
+  background-color: rgb(211, 56, 0);
+}
+
+.delete-btn{
+  background-color: orangered;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 16px;
 }
 
 table {
@@ -44,6 +74,9 @@ th, td {
 }
 
 .notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #fff;
   padding: 15px;
   border-radius: 5px;
@@ -57,4 +90,17 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+}
+
+@media (max-width:768px){
+  .notification-item{
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .button-container{
+    flex-direction: column;
+    align-items: start;
+  }
+
 }

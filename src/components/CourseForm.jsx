@@ -140,7 +140,7 @@ import styles from './CourseForm.module.css';
         </div>
 
         <div className={styles['button-group']}>
-          <button type="submit" className={`${styles.btn} ${styles['btn-submit']}`}>
+          <button type="submit" className={`btn btn-accent`}>
             Submit
           </button>
           <button type="button" className={`${styles.btn} ${styles['btn-cancel']}`} onClick={onClose}>

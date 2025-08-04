@@ -9,6 +9,7 @@
   --accent-color: orange;
   --surface-color: #ffffff;
   --contrast-color: #ffffff;
+  --hover-color:#ffc107;
   --sidebar-width-collapsed: 60px;
   --sidebar-width-expanded: 220px;
   --sidebar-background-color: #272829;
@@ -17,81 +18,9 @@
   --sidebar-text-color: #ffffff;
   --sidebar-hover-text-color: var(--accent-color);
 }
-
-/* Sidebar Container */
-/* Sidebar Styles */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: var(--sidebar-width-collapsed);
-  background-color: var(--sidebar-background-color);
-  color: var(--sidebar-text-color);
-  transition: width 0.3s ease;
-  z-index: 1000;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
+body{
+  transition: all 0.3s;
 }
-
-.sidebar:hover {
-  width: var(--sidebar-width-expanded); 
-}
-
-/* Sidebar List */
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.sidebar ul li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar ul li:hover {
-  background-color: var(--sidebar-hover-color);
-}
-
-/* Icons */
-.sidebar ul li .icon {
-  font-size: 24px;
-  margin-right: 10px;
-}
-
-/* Text */
-.sidebar ul li .text {
-  display: none;
-  font-family: var(--nav-font);
-  font-size: 16px;
-  color: var(--sidebar-text-color);
-}
-
-/* Show text when sidebar expands */
-.sidebar:hover ul li .text {
-  display: inline-block;
-}
-
-/* Active (Clicked) State */
-.sidebar ul li.active {
-  background-color: var(--sidebar-active-color);
-  color: var(--contrast-color);
-}
-
-.sidebar ul li.active .icon, 
-.sidebar ul li.active .text {
-  color: var(--contrast-color);
-}
-
 /* Main Content */
 .admin-content {
   margin-left: var(--sidebar-width-collapsed); /* Content starts after sidebar */
@@ -106,9 +35,13 @@
 
 
 /*Course Operations*/
+
+/* Main Content */
 .course-operations {
   padding: 20px;
   background-color: var(--background-color);
+  max-width: 100%; /* Ensure it doesn't take more than the viewport width */
+  margin: 0 auto;
 }
 
 .header {
@@ -129,20 +62,22 @@
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease;
+  margin-bottom: 2px;
 }
 
 .btn-accent {
   background-color: var(--accent-color);
   color: var(--contrast-color);
+  width: auto; /* Ensure the button doesn't take full width */
 }
 
-.btn-secondary {
-  background-color: var(--default-color);
-  color: var(--contrast-color);
+.btn-accent:hover, .btn-edit:hover{
+  background-color: var(--hover-color);
+  color:#fff;
 }
 
 .btn-edit {
-  background-color: #007bff;
+  background-color: var(--accent-color);
   color: white;
   margin-right: 10px;
 }
@@ -152,12 +87,19 @@
   color: white;
 }
 
+.btn-delete:hover {
+  background-color: #c82333;
+  color: #fff;
+}
+/* Table Styles */
 .course-table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.course-table th, .course-table td {
+.course-table th,
+.course-table td {
   padding: 12px 15px;
   border: 1px solid #ddd;
 }
@@ -165,29 +107,35 @@
 .course-table th {
   background-color: var(--heading-color);
   color: var(--contrast-color);
+  text-align: left;
 }
 
 .course-table td {
   background-color: var(--surface-color);
 }
 
-.course-form {
-  margin-top: 20px;
-}
+@media (max-width: 768px) {
+  .course-table th, .course-table td {
+    padding: 10px;
+  }
 
-.form-group {
-  margin-bottom: 15px;
-}
+  /* Stack table rows on smaller screens */
+  .course-table, .course-table thead, .course-table tbody, .course-table th, .course-table td, .course-table tr {
+    display: block;
+  }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-family: var(--default-font);
-}
+  .course-table tr {
+    margin-bottom: 10px;
+  }
 
-.form-group input, .form-group textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  .course-table th {
+    display: none;
+  }
+
+  .course-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
 }

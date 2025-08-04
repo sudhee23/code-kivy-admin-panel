@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  React,{ useState } from "react";
 import axios from "axios";
 import styles from './RegisterAdmin.module.css';
 
@@ -11,8 +11,9 @@ const RegisterAdmin = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    console.log(name,email,password);
     try {
-      await axios.post("http://localhost:5173/api/admin/register", {
+      await axios.post("http://localhost:5000/api/admin/register", {
         name,
         email,
         password,
@@ -21,6 +22,9 @@ const RegisterAdmin = () => {
     } catch (error) {
       alert("Registration failed");
     }
+    setName('');
+    setEmail('');
+    setPassword('');
   };
 
   return (

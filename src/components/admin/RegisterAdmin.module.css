@@ -44,6 +44,6 @@
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: darkorange;
+.btn-accent:hover {
+  background-color: var(--hover-color);
 }

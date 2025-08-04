@@ -32,7 +32,7 @@
 }
 
 .confirmButton {
-  background-color: #e74c3c;
+  background-color: orange;
   color: white;
 }
 
@@ -40,3 +40,9 @@
   background-color: #bdc3c7;
   color: black;
 }
+
+p,h3{
+  color:black;
+}
+
+

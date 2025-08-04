@@ -1,3 +1,16 @@
+:root {
+  --background-color: #f9f9f9;
+  --primary-text-color: #333;
+  --input-background-color: #fff;
+  --input-text-color: #333;
+  --border-color: #ddd;
+  --accent-color: orange; /* Or your accent color */
+  --btn-accent-background: orange;
+  --btn-accent-hover: rgb(222, 145, 2);
+  --btn-cancel-background: #f8f9fa;
+  --btn-cancel-hover: #e2e6ea;
+  --nav-font: 'Arial', sans-serif; /* Replace with your custom font */
+}
 /* CourseForm.module.css */
 
 .form-container {
@@ -46,33 +59,13 @@
 .form-group textarea:focus {
   border-color: var(--accent-color);
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* Focus shadow */
+  box-shadow: 0 0 5px var(--accent-color); /* Focus shadow */
 }
 
 .button-group {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-}
-
-.btn {
-  padding: 10px 20px;
-  font-family: var(--nav-font);
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit {
-  background-color: var(--btn-accent-background);
-  color: var(--contrast-color);
-}
-
-.btn-submit:hover {
-  background-color: var(--btn-accent-hover);
-  color: var(--primary-text-color);
 }
 
 .btn-cancel {

@@ -9,7 +9,6 @@ const RegisteredStudents = () => {
   const [students, setStudents] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
 
- 
   useEffect(() => {
     // Fetch the list of courses
     const fetchCourses = async () => {
@@ -23,10 +22,10 @@ const RegisteredStudents = () => {
     fetchCourses();
   }, []);
 
-  const handleCourseClick = async (courseId,courseName) => {
+  const handleCourseClick = async (courseId, courseName) => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get(`${API_URL}${courseId}/students`,{
+      const response = await axios.get(`${API_URL}${courseId}/students`, {
         headers: {
           Authorization: `Bearer ${token}`,
         }
@@ -47,8 +46,8 @@ const RegisteredStudents = () => {
         {courses.map((course) => (
           <button
             key={course.courseId}
-            onClick={() => handleCourseClick(course.courseId,course.name)}
-            className={styles['course-btn']}
+            onClick={() => handleCourseClick(course.courseId, course.name)}
+            className={`btn btn-accent ${styles['course-btn']}`}
           >
             {course.name}
           </button>
@@ -58,7 +57,15 @@ const RegisteredStudents = () => {
       {/* Display students for the selected course */}
       {selectedCourse && (
         <div className={styles['students-table']}>
-          <h3>Students Registered in {selectedCourse}</h3>
+          <h3>
+            {students.length > 0 ? (
+              <>
+                {students.length} {students.length === 1 ? 'student' : 'students'} registered in {selectedCourse}
+              </>
+            ) : (
+              `No students registered in ${selectedCourse}`
+            )}
+          </h3>
           <table>
             <thead>
               <tr>
@@ -76,7 +83,7 @@ const RegisteredStudents = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="2">No students registered in this course.</td>
+                  <td colSpan="2">No students registered for this course.</td>
                 </tr>
               )}
             </tbody>

@@ -19,21 +19,22 @@ const AdminSidebar = () => {
     { name: 'Courses', icon: <IoDocumentTextOutline />, path: '/admin/courses' },
     { name: 'Students', icon: <AiOutlineTeam />, path: '/admin/students' },
     { name: 'Notifications', icon: <BsHddStack />, path: '/admin/notifications' },
-    { name: 'Contacts', icon: <BsEnvelope />, path: '/admin/contacts' },
-    { name: 'Logout', icon: <CiLogout />, path: '/' }
+    { name: 'Contacts', icon: <BsEnvelope />, path: '/admin/contacts' }
   ];
-  
+
   const handleItemClick = (name, path) => {
     if (name === 'Logout') {
       setIsModalOpen(true);  // Open the modal when "Logout" is clicked
     } else {
       setActiveItem(name);
+      navigate(path);  // Navigate for all other menu items
     }
   };
 
   const handleConfirmLogout = () => {
-    localStorage.removeItem('authToken');
-    navigate('/');
+    localStorage.removeItem('authToken');  // Remove auth token on logout confirmation
+    setIsModalOpen(false);
+    navigate('/');  // Redirect to login page after logout
   };
 
   return (
@@ -51,13 +52,25 @@ const AdminSidebar = () => {
             </Link>
           </li>
         ))}
-      </ul>
 
+        {/* Special handling for Logout */}
+        <li 
+          className={styles.logoutItem}
+          onClick={() => handleItemClick('Logout')}
+        >
+          <div className={`${styles.link} d-flex align-items-center`}>
+            <span className={styles.icon}><CiLogout /></span>
+            <span className={styles.text}>Logout</span>
+          </div>
+        </li>
+      </ul>
       {/* Logout Confirmation Modal */}
       <ConfirmationModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         onConfirm={handleConfirmLogout} 
+        message={"Are you sure want to Log Out?"}
+        title = "Confirm Logout"
       />
     </div>
   );
